@@ -83,7 +83,6 @@ class _FavoritesPageState extends State<FavoritesPage> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            /// الاسم + زر الحذف
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -111,14 +110,12 @@ class _FavoritesPageState extends State<FavoritesPage> {
 
                             const SizedBox(height: 4),
 
-                            /// id أو أي وصف إضافي
                             Text(
                               item['id'] ?? '',
                               style: const TextStyle(color: Colors.grey),
                             ),
                             const SizedBox(height: 4),
 
-                            /// موقع وهمي ثابت
                             Row(
                               children: const [
                                 Icon(
