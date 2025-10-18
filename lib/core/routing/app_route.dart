@@ -17,12 +17,6 @@ class AppRouting {
             child: const HomeScreen(),
           ),
         );
-      case Routes.search:
-        return MaterialPageRoute(
-          builder: (context) {
-            return SearchScreen();
-          },
-        );
 
       default:
         return defaultPage();

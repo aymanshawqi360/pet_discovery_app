@@ -35,4 +35,9 @@ abstract class HomeApiService {
 
   @GET(HomeApiConstants.breeds)
   Future<List<Breed>> getBreeds();
+  @GET(HomeApiConstants.breeds)
+  Future<List<Breed>> getDataSearch(
+    @Query("q") String q,
+    @Query("attach_image") int attchImage,
+  );
 }

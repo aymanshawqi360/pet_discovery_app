@@ -101,8 +101,8 @@ Map<String, dynamic> _$BreedToJson(Breed instance) => <String, dynamic>{
 };
 
 Weight _$WeightFromJson(Map<String, dynamic> json) => Weight(
-  imperial: json['imperial'] as String,
-  metric: json['metric'] as String,
+  imperial: json['imperial'] as String?,
+  metric: json['metric'] as String?,
 );
 
 Map<String, dynamic> _$WeightToJson(Weight instance) => <String, dynamic>{

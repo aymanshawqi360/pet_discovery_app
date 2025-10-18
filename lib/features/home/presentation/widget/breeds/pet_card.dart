@@ -8,6 +8,7 @@ class PetCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      constraints: BoxConstraints(maxHeight: 120),
       padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -21,27 +22,29 @@ class PetCard extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(8),
             child: Container(
-              constraints: BoxConstraints(maxHeight: 80, minWidth: 80),
+              constraints: BoxConstraints(maxHeight: 80, minWidth: 10),
               color: const Color(0xFFE0F7FA),
-              child: Image.network(
-                breed.referenceImageId != null
-                    ? 'https://cdn2.thecatapi.com/images/${breed.referenceImageId}.jpg'
-                    : 'https://upload.wikimedia.org/wikipedia/commons/3/3a/Cat03.jpg',
-
+              child: SizedBox(
                 width: 80,
                 height: 80,
-                fit: BoxFit.cover,
+                child: Image.network(
+                  breed.referenceImageId != null
+                      ? 'https://cdn2.thecatapi.com/images/${breed.referenceImageId}.jpg'
+                      : 'https://upload.wikimedia.org/wikipedia/commons/3/3a/Cat03.jpg',
+
+                  width: 80,
+                  height: 80,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),
           const SizedBox(width: 10),
 
-          // النصوص على اليمين
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // الاسم + أيقونة القلب
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

@@ -22,7 +22,7 @@ class DataSearchBlocBuilder extends StatelessWidget {
         } else if (state is HomeDataSearchFailure) {
           return buildFailureState();
         } else {
-          return Center(child: Text("ErrorDefault"));
+          return Center(child: Text("No results yet, start searching!"));
         }
       },
     );

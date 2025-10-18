@@ -5,13 +5,13 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i9;
 
-import 'package:dio/src/adapter.dart' as _i4;
+import 'package:dio/src/adapter.dart' as _i3;
 import 'package:dio/src/cancel_token.dart' as _i10;
 import 'package:dio/src/dio.dart' as _i7;
-import 'package:dio/src/dio_mixin.dart' as _i3;
+import 'package:dio/src/dio_mixin.dart' as _i5;
 import 'package:dio/src/options.dart' as _i2;
 import 'package:dio/src/response.dart' as _i6;
-import 'package:dio/src/transformer.dart' as _i5;
+import 'package:dio/src/transformer.dart' as _i4;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:pet_discovery_app/core/error/api_resulte.dart' as _i8;
 import 'package:pet_discovery_app/features/home/data/model/home_breed_molde.dart'
@@ -32,26 +32,25 @@ import 'package:pet_discovery_app/features/home/domain/repo/home_repo.dart'
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
-// ignore_for_file: invalid_use_of_internal_member
 
 class _FakeBaseOptions_0 extends _i1.SmartFake implements _i2.BaseOptions {
   _FakeBaseOptions_0(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
-class _FakeInterceptors_1 extends _i1.SmartFake implements _i3.Interceptors {
-  _FakeInterceptors_1(Object parent, Invocation parentInvocation)
+class _FakeHttpClientAdapter_1 extends _i1.SmartFake
+    implements _i3.HttpClientAdapter {
+  _FakeHttpClientAdapter_1(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
-class _FakeHttpClientAdapter_2 extends _i1.SmartFake
-    implements _i4.HttpClientAdapter {
-  _FakeHttpClientAdapter_2(Object parent, Invocation parentInvocation)
+class _FakeTransformer_2 extends _i1.SmartFake implements _i4.Transformer {
+  _FakeTransformer_2(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
-class _FakeTransformer_3 extends _i1.SmartFake implements _i5.Transformer {
-  _FakeTransformer_3(Object parent, Invocation parentInvocation)
+class _FakeInterceptors_3 extends _i1.SmartFake implements _i5.Interceptors {
+  _FakeInterceptors_3(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
@@ -87,65 +86,66 @@ class MockDio extends _i1.Mock implements _i7.Dio {
           as _i2.BaseOptions);
 
   @override
-  _i3.Interceptors get interceptors =>
-      (super.noSuchMethod(
-            Invocation.getter(#interceptors),
-            returnValue: _FakeInterceptors_1(
-              this,
-              Invocation.getter(#interceptors),
-            ),
-            returnValueForMissingStub: _FakeInterceptors_1(
-              this,
-              Invocation.getter(#interceptors),
-            ),
-          )
-          as _i3.Interceptors);
-
-  @override
-  _i4.HttpClientAdapter get httpClientAdapter =>
+  _i3.HttpClientAdapter get httpClientAdapter =>
       (super.noSuchMethod(
             Invocation.getter(#httpClientAdapter),
-            returnValue: _FakeHttpClientAdapter_2(
+            returnValue: _FakeHttpClientAdapter_1(
               this,
               Invocation.getter(#httpClientAdapter),
             ),
-            returnValueForMissingStub: _FakeHttpClientAdapter_2(
+            returnValueForMissingStub: _FakeHttpClientAdapter_1(
               this,
               Invocation.getter(#httpClientAdapter),
             ),
           )
-          as _i4.HttpClientAdapter);
+          as _i3.HttpClientAdapter);
 
   @override
-  _i5.Transformer get transformer =>
+  _i4.Transformer get transformer =>
       (super.noSuchMethod(
             Invocation.getter(#transformer),
-            returnValue: _FakeTransformer_3(
+            returnValue: _FakeTransformer_2(
               this,
               Invocation.getter(#transformer),
             ),
-            returnValueForMissingStub: _FakeTransformer_3(
+            returnValueForMissingStub: _FakeTransformer_2(
               this,
               Invocation.getter(#transformer),
             ),
           )
-          as _i5.Transformer);
+          as _i4.Transformer);
 
   @override
-  set options(_i2.BaseOptions? value) => super.noSuchMethod(
-    Invocation.setter(#options, value),
+  _i5.Interceptors get interceptors =>
+      (super.noSuchMethod(
+            Invocation.getter(#interceptors),
+            returnValue: _FakeInterceptors_3(
+              this,
+              Invocation.getter(#interceptors),
+            ),
+            returnValueForMissingStub: _FakeInterceptors_3(
+              this,
+              Invocation.getter(#interceptors),
+            ),
+          )
+          as _i5.Interceptors);
+
+  @override
+  set options(_i2.BaseOptions? _options) => super.noSuchMethod(
+    Invocation.setter(#options, _options),
     returnValueForMissingStub: null,
   );
 
   @override
-  set httpClientAdapter(_i4.HttpClientAdapter? value) => super.noSuchMethod(
-    Invocation.setter(#httpClientAdapter, value),
-    returnValueForMissingStub: null,
-  );
+  set httpClientAdapter(_i3.HttpClientAdapter? _httpClientAdapter) =>
+      super.noSuchMethod(
+        Invocation.setter(#httpClientAdapter, _httpClientAdapter),
+        returnValueForMissingStub: null,
+      );
 
   @override
-  set transformer(_i5.Transformer? value) => super.noSuchMethod(
-    Invocation.setter(#transformer, value),
+  set transformer(_i4.Transformer? _transformer) => super.noSuchMethod(
+    Invocation.setter(#transformer, _transformer),
     returnValueForMissingStub: null,
   );
 
@@ -1059,9 +1059,9 @@ class MockDio extends _i1.Mock implements _i7.Dio {
   @override
   _i7.Dio clone({
     _i2.BaseOptions? options,
-    _i3.Interceptors? interceptors,
-    _i4.HttpClientAdapter? httpClientAdapter,
-    _i5.Transformer? transformer,
+    _i5.Interceptors? interceptors,
+    _i3.HttpClientAdapter? httpClientAdapter,
+    _i4.Transformer? transformer,
   }) =>
       (super.noSuchMethod(
             Invocation.method(#clone, [], {
@@ -1116,6 +1116,38 @@ class MockHomeRepo extends _i1.Mock implements _i11.HomeRepo {
                     Invocation.method(#getBreeds, [], {
                       #limit: limit,
                       #page: page,
+                    }),
+                  ),
+                ),
+          )
+          as _i9.Future<_i8.ApiResulte<List<_i12.Breed>>>);
+
+  @override
+  _i9.Future<_i8.ApiResulte<List<_i12.Breed>>> getDataSearch({
+    required String? q,
+    required int? attchImage,
+  }) =>
+      (super.noSuchMethod(
+            Invocation.method(#getDataSearch, [], {
+              #q: q,
+              #attchImage: attchImage,
+            }),
+            returnValue: _i9.Future<_i8.ApiResulte<List<_i12.Breed>>>.value(
+              _FakeApiResulte_6<List<_i12.Breed>>(
+                this,
+                Invocation.method(#getDataSearch, [], {
+                  #q: q,
+                  #attchImage: attchImage,
+                }),
+              ),
+            ),
+            returnValueForMissingStub:
+                _i9.Future<_i8.ApiResulte<List<_i12.Breed>>>.value(
+                  _FakeApiResulte_6<List<_i12.Breed>>(
+                    this,
+                    Invocation.method(#getDataSearch, [], {
+                      #q: q,
+                      #attchImage: attchImage,
                     }),
                   ),
                 ),
