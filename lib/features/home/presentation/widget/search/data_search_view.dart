@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:pet_discovery_app/features/home/data/model/home_breed_molde.dart';
 
-class PetCard extends StatelessWidget {
+class DataSearchView extends StatelessWidget {
   final Breed breed;
-  const PetCard({super.key, required this.breed});
+  const DataSearchView({super.key, required this.breed});
 
   @override
   Widget build(BuildContext context) {

@@ -23,4 +23,18 @@ class HomeRepoimplementaion implements HomeRepo {
       return ApiResulte.failure(ApiErrorHandler.apiHandler(e));
     }
   }
+
+  @override
+  Future<ApiResulte<List<Breed>>> getDataSearch({
+    required String q,
+    required int attchImage,
+  }) async {
+    try {
+      final response = await homeApiService.getDataSearch(q, attchImage);
+
+      return ApiResulte.success(response);
+    } catch (e) {
+      return ApiResulte.failure(ApiErrorHandler.apiHandler(e));
+    }
+  }
 }

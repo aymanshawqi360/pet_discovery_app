@@ -18,8 +18,8 @@ class AppListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      scrollDirection: scrollDirection ?? Axis.horizontal,
-      shrinkWrap: shrinkWrap ?? false,
+      // scrollDirection: scrollDirection ?? Axis.horizontal,
+      // shrinkWrap: shrinkWrap ?? false,
       itemBuilder: itemBuilder,
       itemCount: itemCount,
       //    separatorBuilder: separatorBuilder,

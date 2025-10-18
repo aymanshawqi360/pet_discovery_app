@@ -6,4 +6,8 @@ abstract class HomeRepo {
     required int limit,
     required int page,
   });
+  Future<ApiResulte<List<Breed>>> getDataSearch({
+    required String q,
+    required int attchImage,
+  });
 }

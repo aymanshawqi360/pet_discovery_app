@@ -5,6 +5,7 @@ import 'package:pet_discovery_app/core/di/dependency_injection.dart';
 import 'package:pet_discovery_app/core/routing/routes.dart';
 import 'package:pet_discovery_app/features/home/presentation/cubit/home_cubit.dart';
 import 'package:pet_discovery_app/features/home/presentation/screen/home_screen.dart';
+import 'package:pet_discovery_app/features/home/presentation/screen/search_screen.dart';
 
 class AppRouting {
   Route onGenerateRoute(RouteSettings routeSettings) {
