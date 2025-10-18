@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:pet_discovery_app/core/networking/favorites_manager.dart';
 import 'package:pet_discovery_app/features/home/data/model/home_breed_molde.dart';
 
-class DataSearchView extends StatelessWidget {
+class DataSearchView extends StatefulWidget {
   final Breed breed;
   const DataSearchView({super.key, required this.breed});
 
+  @override
+  State<DataSearchView> createState() => _DataSearchViewState();
+}
+
+class _DataSearchViewState extends State<DataSearchView> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -28,8 +34,8 @@ class DataSearchView extends StatelessWidget {
                 width: 80,
                 height: 80,
                 child: Image.network(
-                  breed.referenceImageId != null
-                      ? 'https://cdn2.thecatapi.com/images/${breed.referenceImageId}.jpg'
+                  widget.breed.referenceImageId != null
+                      ? 'https://cdn2.thecatapi.com/images/${widget.breed.referenceImageId}.jpg'
                       : 'https://upload.wikimedia.org/wikipedia/commons/3/3a/Cat03.jpg',
 
                   width: 80,
@@ -49,23 +55,49 @@ class DataSearchView extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      breed.name ?? "",
+                      widget.breed.name ?? "",
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Icon(Icons.favorite_border, color: Colors.teal),
+                    GestureDetector(
+                      onTap: () async {
+                        bool isFav = FavoritesManager().isFavorite(
+                          widget.breed.id!,
+                        );
+                        if (isFav) {
+                          await FavoritesManager().removeFavorite(
+                            widget.breed.id!,
+                          );
+                        } else {
+                          await FavoritesManager().addFavorite({
+                            'id': widget.breed.id,
+                            'name': widget.breed.name,
+                            'image': widget.breed.referenceImageId,
+                          });
+                        }
+                        setState(() {});
+                      },
+                      child: Icon(
+                        FavoritesManager().isFavorite(widget.breed.id!)
+                            ? Icons.favorite
+                            : Icons.favorite_border,
+                        color: FavoritesManager().isFavorite(widget.breed.id!)
+                            ? Colors.red
+                            : Colors.teal,
+                      ),
+                    ),
                   ],
                 ),
 
                 const SizedBox(height: 4),
                 Text(
-                  breed.id ?? 'Female',
+                  widget.breed.id ?? 'Female',
                   style: TextStyle(color: Colors.grey),
                 ),
                 Text(
-                  breed.origin ?? "5 Months Old",
+                  widget.breed.origin ?? "5 Months Old",
                   style: TextStyle(color: Colors.grey),
                 ),
 

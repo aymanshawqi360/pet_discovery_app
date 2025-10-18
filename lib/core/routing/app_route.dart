@@ -5,18 +5,16 @@ import 'package:pet_discovery_app/core/di/dependency_injection.dart';
 import 'package:pet_discovery_app/core/routing/routes.dart';
 import 'package:pet_discovery_app/features/home/presentation/cubit/home_cubit.dart';
 import 'package:pet_discovery_app/features/home/presentation/screen/home_screen.dart';
+import 'package:pet_discovery_app/features/home/presentation/screen/navigator_example.dart';
 import 'package:pet_discovery_app/features/home/presentation/screen/search_screen.dart';
 
 class AppRouting {
   Route onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
-      case Routes.home:
-        return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) => sl<HomeCubit>(),
-            child: const HomeScreen(),
-          ),
-        );
+      // case Routes.home:
+      //   return MaterialPageRoute(builder: (_) => HomeScreen());
+      case Routes.navigatorExample:
+        return MaterialPageRoute(builder: (_) => const NavigatorExample());
 
       default:
         return defaultPage();
