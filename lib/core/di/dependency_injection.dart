@@ -4,6 +4,7 @@ import 'package:pet_discovery_app/core/networking/dio_factory.dart';
 import 'package:pet_discovery_app/features/home/data/api/home_api_service.dart';
 import 'package:pet_discovery_app/features/home/data/repo_implementation/home_repo_implementaion.dart';
 import 'package:pet_discovery_app/features/home/domain/repo/home_repo.dart';
+import 'package:pet_discovery_app/features/home/domain/use_cases/breed_search_use_cases.dart';
 import 'package:pet_discovery_app/features/home/domain/use_cases/breed_use_cases.dart';
 import 'package:pet_discovery_app/features/home/presentation/cubit/home_cubit.dart';
 
@@ -29,8 +30,13 @@ Future<void> setupGetIt() async {
   //!UseCases
 
   sl.registerLazySingleton<BreedUseCases>(() => BreedUseCases(homeRepo: sl()));
+  sl.registerLazySingleton<BreedSearchUseCases>(
+    () => BreedSearchUseCases(homeRepo: sl()),
+  );
 
   //!Cubit
 
-  sl.registerFactory(() => HomeCubit(breedUseCases: sl()));
+  sl.registerFactory(
+    () => HomeCubit(breedUseCases: sl(), breedSearchUseCases: sl()),
+  );
 }
